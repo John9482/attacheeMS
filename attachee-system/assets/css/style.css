@@ -1,0 +1,157 @@
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #faf8f8;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Government Banner */
+.government-banner {
+    font-size: 0.9rem;
+    border-bottom: 2px solid #f0ad4e;
+}
+
+.government-banner img {
+    vertical-align: middle;
+}
+
+/* Navigation */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.navbar-dark.bg-success {
+    background-color: #28a745 !important;
+}
+
+.nav-link {
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+}
+
+.dropdown-menu {
+    border: none;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item {
+    padding: 0.5rem 1.5rem;
+}
+
+/* Card Styles */
+.card {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 0.5rem;
+}
+
+.card-header {
+    font-weight: 600;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding: 1rem 1.25rem;
+}
+
+/* Table Styles */
+.table-responsive {
+    overflow-x: auto;
+    border-radius: 0.5rem;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+.table thead th {
+    background-color: #28a745;
+    color: white;
+    border-bottom: none;
+}
+
+/* Badges */
+.badge {
+    font-weight: 500;
+    padding: 0.35em 0.65em;
+    border-radius: 0.25rem;
+}
+
+/* Buttons */
+.btn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    font-weight: 500;
+}
+
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+/* Footer */
+.footer {
+    background-color: #343a40;
+    font-size: 0.9rem;
+}
+
+.footer h5 {
+    color: #f8f9fa;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.footer a {
+    color: #adb5bd;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer a:hover {
+    color: white;
+}
+
+.social-icons a {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    margin-right: 8px;
+    transition: all 0.3s;
+}
+
+.social-icons a:hover {
+    background-color: #28a745;
+    color: white !important;
+}
+
+/* Progress Bars */
+.progress {
+    height: 20px;
+    border-radius: 4px;
+}
+
+.progress-bar {
+    font-size: 0.75rem;
+    line-height: 20px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .government-banner .col-md-6 {
+        text-align: center !important;
+        margin-bottom: 0.5rem;
+    }
+    
+    .footer .col-md-4 {
+        margin-bottom: 1.5rem;
+    }
+}
