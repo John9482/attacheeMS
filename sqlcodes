@@ -1,0 +1,107 @@
+-- Create database
+CREATE DATABASE IF NOT EXISTS `attachee_management_system`;
+USE `attachee_management_system`;
+
+-- Table: departments
+CREATE TABLE `departments` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `description` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `location` varchar(255) DEFAULT NULL,
+  `max_capacity` int(11) DEFAULT 10
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Insert departments data
+INSERT INTO `departments` (`id`, `name`, `description`, `created_at`, `location`, `max_capacity`) VALUES
+(1, 'ICT', 'Information and Communication Technology Department', '2025-06-11 19:35:13', NULL, 10),
+(2, 'Procurement', 'Procurement Department', '2025-06-11 19:35:13', NULL, 10),
+(3, 'Public Communication', 'Public Communication Department', '2025-06-11 19:35:13', NULL, 10),
+(4, 'CPPMU', 'County Project Planning and Monitoring Unit', '2025-06-11 19:35:13', NULL, 10),
+(5, 'ATDC', 'Agricultural Training and Development Center', '2025-06-11 19:35:13', NULL, 10),
+(6, 'NAVCPD', 'National Agricultural Value Chain Development', '2025-06-11 19:35:13', NULL, 10),
+(7, 'APCU', 'Agricultural Policy Coordination Unit', '2025-06-11 19:35:13', NULL, 10),
+(8, 'State Cooperation\'s', 'State Cooperation Department', '2025-06-11 19:35:13', NULL, 10),
+(9, 'Secretary Administration', 'Secretary Administration Department', '2025-06-11 19:35:13', NULL, 10),
+(10, 'Horticulture', 'Horticulture Department', '2025-06-11 19:35:13', NULL, 10),
+(11, 'Call Centers', 'Call Centers Department', '2025-06-11 19:35:13', NULL, 10),
+(12, 'Agriculture', 'Agriculture Department', '2025-06-11 19:35:13', NULL, 10),
+(13, 'Statistics', 'Statistics Department', '2025-06-11 19:35:13', NULL, 10),
+(14, 'Accounts', 'Accounts Department', '2025-06-11 19:35:13', NULL, 10),
+(15, 'Human Resource (HR)', 'Human Resources Department', '2025-06-11 19:35:13', NULL, 10),
+(16, 'Research and Innovation', 'Research and Innovation Department', '2025-06-11 19:35:13', NULL, 10),
+(17, 'Engineering', 'Engineering Department', '2025-06-11 19:35:13', NULL, 10),
+(18, 'Crops Resources Management', 'Crops Resources Management Department', '2025-06-11 19:35:13', NULL, 10),
+(19, 'Planning', 'Planning Department', '2025-06-11 19:35:13', NULL, 10),
+(20, 'Plant protection and Food Safety', 'Plant Protection and Food Safety Department', '2025-06-11 19:35:13', NULL, 10),
+(21, 'AIRC', 'Agricultural Information Resource Center', '2025-06-11 19:35:13', NULL, 10),
+(22, 'KSA', 'Knowledge Sharing and Adoption', '2025-06-11 19:35:13', NULL, 10),
+(23, 'SDAG', 'Sustainable Development Advisory Group', '2025-06-11 19:35:13', NULL, 10),
+(24, 'CFO', 'Chief Finance Office', '2025-06-11 19:35:13', NULL, 10),
+(25, 'Agribusiness and Market development', 'Agribusiness and Market Development Department', '2025-06-11 19:35:13', NULL, 10),
+(26, 'Parliamentary Unit', 'Parliamentary Unit Department', '2025-06-11 19:35:13', NULL, 10),
+(27, 'Legal Services', 'Legal Services Department', '2025-06-11 19:35:13', NULL, 10),
+(28, 'SCU', 'Strategic Coordination Unit', '2025-06-11 19:35:13', NULL, 10),
+(29, 'ATO', 'Agricultural Technology Outreach', '2025-06-11 19:35:13', NULL, 10),
+(30, 'Policy Registry', 'Policy Registry Department', '2025-06-11 19:35:13', NULL, 10),
+(31, 'project Coordinators', 'Project Coordinators Department', '2025-06-11 19:35:13', NULL, 10),
+(32, 'FSRP', 'Field Services and Research Planning Department', '2025-06-30 09:29:17', NULL, 10);
+
+-- Table: attachees
+CREATE TABLE `attachees` (
+  `id` int(11) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `gender` enum('Male','Female','Other') NOT NULL,
+  `department_id` int(11) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `school` varchar(100) NOT NULL,
+  `course` varchar(100) NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `status` enum('Active','Completed') DEFAULT 'Active',
+  `progress_notes` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `location_slot` varchar(255) DEFAULT NULL,
+  `financial_year` varchar(9) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Table: users
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `full_name` varchar(100) DEFAULT NULL,
+  `email` varchar(100) NOT NULL,
+  `phone` varchar(20) DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Indexes
+ALTER TABLE `attachees`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `department_id` (`department_id`);
+
+ALTER TABLE `departments`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`),
+  ADD UNIQUE KEY `email` (`email`);
+
+-- AUTO_INCREMENT values
+ALTER TABLE `attachees`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+
+ALTER TABLE `departments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+-- Foreign key
+ALTER TABLE `attachees`
+  ADD CONSTRAINT `attachees_ibfk_1` FOREIGN KEY (`department_id`) REFERENCES `departments` (`id`);
